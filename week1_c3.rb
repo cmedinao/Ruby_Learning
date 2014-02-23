@@ -3,19 +3,17 @@
 #multiplication_table (integer, heading = '', decorate = false)
 #returns a string object.
 
-
 def multiplication_table (integer , heading = '', decorate = false)
 table=[]
+max_number_length=integer**2
 line=Array.new
 line.push("#{heading}"+"\n")
 if decorate
-	line.push( "#{"="*integer*4}"+"\n" )
+	line.push( "#{"="*integer*max_number_length.to_s.size.next}"+"\n" )
 end
 count=1
 	while count<=integer do
-	#line.push(" ")
-	#integer.times { |i| line.push((i+1)*count); line.push(" ") }
-	integer.times { |i| line.push(((i.next)*count).to_s.rjust(4,' ') ) }
+	integer.times { |i| line.push(((i.next)*count).to_s.rjust(max_number_length.to_s.size.next,' ') ) }
 	line.push("\n")
 	table<<line
 	count +=1
@@ -23,19 +21,17 @@ count=1
 	end
 
 if decorate
-        table.push( "#{"="*integer*4}"+"\n" )
+        table.push( "#{"="*integer*max_number_length.to_s.size.next}"+"\n" )
 end
-
 
 return table.to_s
 end
 
-table1 = multiplication_table 9, 'Times Table to 9', true
-table2 = multiplication_table 20, 'Times Table to 20', true
- 
+puts
+print "Enter multiplication table size: "
+size=gets.chomp.to_i
 
-#line_length_max=table1.to_s.split("\n").sort[-1].size
-#printf "%#{line_length_max} % table1"
-puts table1
-puts "\n"
-puts table2
+table = multiplication_table size, "Multiplication Table to #{size}", true
+
+puts
+puts table
