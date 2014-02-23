@@ -2,6 +2,5 @@
 
 def prompt(input)
 	print input
-	answer=gets.chomp
-	return answer
+	gets.chomp
 end
